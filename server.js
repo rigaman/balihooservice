@@ -1,26 +1,31 @@
 const express = require('express');
 const app = express();
-
-let i = 0;
-
-const resp = (q) => {
-    let ret = {
-        Ping: 'OK',
-        Position: 'Sr. Full Stack Engineer',
-        Phone: '847-858-4542',
-        Source: 'https://docs.google.com/document/d/1kuMEcUgu12hYrbS0PyQEYLFhPjaWOkK61FlbZ4zoF8g/edit?usp=sharing',
-        EmailAddress: 'p.plekhanov@gmail.com',
-
-
-    };
-
-    console.log('here');
+let answers = {
+    Ping: 'OK',
+    Position: 'Sr. Full Stack Engineer',
+    Phone: '847-858-4542',
+    Resume: 'https://docs.google.com/document/d/1kuMEcUgu12hYrbS0PyQEYLFhPjaWOkK61FlbZ4zoF8g/edit?usp=sharing',
+    EmailAddress: 'p.plekhanov@gmail.com',
+    Name: 'Philip Plekhanov',
+    Referrer: 'Jenny Gasparis',
+    Source: 'https://github.com/rigaman/balihooservice',
+    Years: '15+',
+    Status: 'I am US citizen.',
+    Degree: 'B.S. Information Technology'
+};
+const puzz = (q, e) => {
+    let ret = "OK";
+    q = q.replace(/(\r\n|\n|\r)/gm,'')
+    console.log(q);
+    console.log(e);
     return ret;
+};
+const resp = (q) => {
+
+    return answers[q.q.split(' ').join('')] || puzz(q.d.split('ABCD')[1], q) || 'OK';
 }
 
 app.get('/', (req, res) => {
-    i += 1;
-    console.log(i, req.query);
     res.send(resp(req.query));
 });
 
