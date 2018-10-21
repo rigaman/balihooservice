@@ -13,12 +13,13 @@ let answers = {
     Status: 'I am US citizen.',
     Degree: 'B.S. Information Technology'
 };
+
 const puzz = (q, e) => {
     let ret = "OK";
-    q = q.replace(/(\r\n|\n|\r)/gm,'')
+
     console.log(q);
-    console.log(e);
-    return ret;
+    ret = q.replace(/-/g, ">");;
+    return ' ABCD' + ret;
 };
 const resp = (q) => {
 
