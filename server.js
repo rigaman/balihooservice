@@ -22,7 +22,6 @@ const puzz = (q, e) => {
     return ' ABCD' + ret;
 };
 const resp = (q) => {
-
     return answers[q.q.split(' ').join('')] || puzz(q.d.split('ABCD')[1], q) || 'OK';
 }
 
