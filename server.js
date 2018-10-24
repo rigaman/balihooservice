@@ -14,19 +14,8 @@ let answers = {
     Degree: 'B.S. Information Technology'
 };
 
-const puzz = (q, e) => {
-    let ret = "OK";
-
-    console.log(q);
-    ret = q.replace(/-/g, ">");;
-    return ' ABCD' + ret;
-};
-const resp = (q) => {
-    return answers[q.q.split(' ').join('')] || puzz(q.d.split('ABCD')[1], q) || 'OK';
-}
-
 app.get('/', (req, res) => {
-    res.send(resp(req.query));
+    res.send(answers[req.query.q.split(' ').join('')]);
 });
 
 app.listen(3000, () => console.log('listening port 3000'));
